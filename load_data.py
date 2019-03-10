@@ -1,13 +1,7 @@
 import os, re
-
-from numpy import array, log, zeros
-
-import numpy as np
-
+from numpy import array, float64, log, zeros
 from random import sample, shuffle
-
 from variables import *
-
 from vocab import get_index
 
 regex = re.compile('[^a-zA-Z]')
@@ -20,7 +14,7 @@ def get_data(path,size,total):
         with open(path+filename, encoding="utf8", errors='ignore') as file:
             file = file.read()
             file = file.split('\n')
-            bag, terms = zeros((len(VECTOR),), dtype=np.float64), 0
+            bag, terms = zeros((len(VECTOR),), dtype=float64), 0
             
             for line in file: 
                 line = line.split(' ')

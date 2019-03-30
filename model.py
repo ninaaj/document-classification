@@ -3,18 +3,18 @@ from keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras.models import Sequential, load_model
 from keras.layers import Dense, Dropout, Activation
 from keras.utils import np_utils
-from load_data import load_test_data, load_training_data, load_validation_data
+from load_data import load_training_data, load_validation_data
 from variables import *
 
 def get_training_data():
-    print('getting training data')
+    print('\ngetting training data')
     x_train, y_train = load_training_data()
     Y_train = np_utils.to_categorical(y_train, len(LABELS))
     X_val, Y_val = get_validation_data()
     return x_train, Y_train, X_val, Y_val
 
 def get_validation_data():
-    print('getting validation data')
+    print('\ngetting validation data')
     x_valid, y_valid = load_validation_data()
     Y_valid = np_utils.to_categorical(y_valid, len(LABELS))
     return x_valid, Y_valid

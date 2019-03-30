@@ -1,10 +1,8 @@
 VOCAB = {} #key = word, value = number of documents word appears in
 
-VECTOR = [] #list of vocab words
+VECTOR = [] #list of vocab words to model the bag-of-words after
 
-PATHS = {'LOGS':'logs/{}.txt',
-        'TEST':'datasets/test/',
-        'TRAIN':'datasets/train/{}/',
+PATHS = {'TRAIN':'datasets/train/{}/',
         'VALID':'datasets/valid/{}/'}
 
 TOTALS = {'TRAIN':5659,

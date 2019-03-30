@@ -2,7 +2,7 @@ import os, re
 os.environ['TF_CPP_MIN_LOG_LEVEL']='3'
 from numpy import array, log, zeros
 import numpy as np
-from random import sample, shuffle
+from random import shuffle
 from variables import *
 from vocab import get_index
 

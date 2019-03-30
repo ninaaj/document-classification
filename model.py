@@ -24,7 +24,7 @@ def make_model(batch_size,epochs,verbose,units):
     x_train, y_train, x_val, y_val = get_training_data()
     
     model_name = f'{batch_size}_{units}'
-    model_path = PATHS['MODELS'] + model_name + '_{epoch:02d}.h5'
+    model_path = model_name + '_{epoch:02d}.h5'
     
     callbacks = [EarlyStopping(monitor='val_loss', patience=0, verbose=2),ModelCheckpoint(model_path, monitor='val_loss', save_best_only=True)]
     

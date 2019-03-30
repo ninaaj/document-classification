@@ -1,5 +1,5 @@
-VOCAB = {} #key:word,[]
-VECTOR = [] #list of words
+VOCAB = {} #key = word, value = number of documents word appears in
+VECTOR = [] #list of vocab words
 
 PATHS = {'LOGS':'logs/{}.txt',
         'TEST':'datasets/test/',

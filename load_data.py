@@ -52,7 +52,7 @@ def load_training_data():
     train_data, train_labels = [], []
     
     for label in LABELS:
-        print(f'loading training data for class {LABELS[label]}')
+        print(f'\nloading training data for class {LABELS[label]}')
         path = PATHS['TRAIN'].format(LABELS[label])
         data = get_data(path,TOTALS['TRAIN'])
         train_data.extend(data)
@@ -68,7 +68,7 @@ def load_validation_data():
     valid_data, valid_labels = [], []
     
     for label in LABELS:
-        print(f'loading validation data for class {LABELS[label]}')
+        print(f'\nloading validation data for class {LABELS[label]}')
         path = PATHS['VALID'].format(LABELS[label])
         data = get_data(path,TOTALS['TRAIN'])
         valid_data.extend(data)

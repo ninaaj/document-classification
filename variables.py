@@ -2,7 +2,6 @@ VOCAB = {} #key:word,[]
 VECTOR = [] #list of words
 
 PATHS = {'LOGS':'logs/{}.txt',
-        'MODELS':'models/',
         'TEST':'datasets/test/',
         'TRAIN':'datasets/train/{}/',
         'VALID':'datasets/valid/{}/'}

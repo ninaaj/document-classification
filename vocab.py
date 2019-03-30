@@ -10,6 +10,7 @@ def build_vocab():
         process_files(PATHS['TRAIN'].format(LABELS[label]))
     VECTOR.extend(list(VOCAB.keys()))
     VECTOR.sort()
+    print(f'\n\nvocabulary size = {len(VOCAB)}')
 
 def process_files(path):
 
@@ -23,7 +24,6 @@ def process_files(path):
             prev = []
             for line in file: 
                 line = line.split(' ')
-
                 line[0] = regex.sub('', line[0])
                 
                 if len(line) != 2 or not line[0].isalpha():
@@ -36,7 +36,6 @@ def process_files(path):
                     VOCAB[line[0]] = 0
 
                 VOCAB[line[0]] += 1    
-
                 prev.append(line[0])
     rare = []
     
@@ -46,7 +45,6 @@ def process_files(path):
     
     for word in rare:
         VOCAB.pop(word)
-
 
 def get_index(word):
     return VECTOR.index(word) 

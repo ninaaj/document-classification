@@ -9,15 +9,23 @@ from vocab import get_index
 regex = re.compile('[^a-zA-Z]')
 
 def get_data(path,total):
+    
     current_class = []
+    
     for filename in os.listdir(path):
+        
         if filename in IGNORED_FILES:
             continue
+    
         with open(path+filename, encoding='utf8', errors='ignore') as file:
+            
             file = file.read()
             file = file.split('\n')
+            
             bag = zeros((len(VECTOR),), dtype=np.float64)  
+            
             terms = 0
+            
             for line in file:   
                 line = line.split(' ')
                 line[0] = regex.sub('', line[0]) 
@@ -33,12 +41,15 @@ def get_data(path,total):
             # weight bag using TF-IDF weighting
             # TF-IDF = # of term occurances in document / total terms in document * natural log of total # of documents / # of documents term occurs in
             bag = [(bag[i]/terms)*log(total/VOCAB[VECTOR[i]]) for i in range(0,len(bag))]
+            
             current_class.append(bag)
     
     return current_class
 
 def load_training_data():
+    
     train_data, train_labels = [], []
+    
     for label in LABELS:
         print(f'\nloading training data for class {LABELS[label]}')
         path = PATHS['TRAIN'].format(LABELS[label])
@@ -53,7 +64,9 @@ def load_training_data():
     return array(train_data), array(train_labels)
 
 def load_validation_data():
+    
     valid_data, valid_labels = [], [] 
+    
     for label in LABELS:
         print(f'\nloading validation data for class {LABELS[label]}')
         path = PATHS['VALID'].format(LABELS[label])

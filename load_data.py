@@ -1,7 +1,8 @@
 import os, re
 os.environ['TF_CPP_MIN_LOG_LEVEL']='3'
-from numpy import array, log, zeros
+
 import numpy as np
+
 from random import shuffle
 from variables import *
 from vocab import get_index
@@ -22,7 +23,7 @@ def get_data(path,total):
             file = file.read()
             file = file.split('\n')
             
-            bag = zeros((len(VECTOR),), dtype=np.float64)  
+            bag = np.zeros((len(VECTOR),), dtype=np.float64)  
             
             terms = 0
             
@@ -40,7 +41,7 @@ def get_data(path,total):
             
             # weight bag using TF-IDF weighting
             # TF-IDF = # of term occurances in document / total terms in document * natural log of total # of documents / # of documents term occurs in
-            bag = [(bag[i]/terms)*log(total/VOCAB[VECTOR[i]]) for i in range(0,len(bag))]
+            bag = [(bag[i]/terms)*np.log(total/VOCAB[VECTOR[i]]) for i in range(0,len(bag))]
             
             current_class.append(bag)
     
@@ -61,7 +62,7 @@ def load_training_data():
     shuffle(train)
     train_data, train_labels = zip(*train)
 
-    return array(train_data), array(train_labels)
+    return np.array(train_data), np.array(train_labels)
 
 def load_validation_data():
     
@@ -78,4 +79,4 @@ def load_validation_data():
     shuffle(valid)
     valid_data, valid_labels = zip(*valid)
 
-    return array(valid_data), array(valid_labels)
+    return np.array(valid_data), np.array(valid_labels)

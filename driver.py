@@ -1,6 +1,4 @@
-import os
-from variables import *
-from model import *
+from model import make_model
 
 BATCH_SIZE = 128 #number of samples per gradient update 
 EPOCHS =  10 #number of epochs to train the model (may be less due to early stopping callback)

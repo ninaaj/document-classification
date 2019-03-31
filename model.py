@@ -1,10 +1,12 @@
 import numpy as np
+
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras.models import Sequential, load_model
 from keras.layers import Dense, Dropout, Activation
 from keras.utils import np_utils
+
 from load_data import load_training_data, load_validation_data
-from variables import *
+from variables import LABELS, VOCAB
 
 def get_training_data():
     print('\ngetting training data')
@@ -26,7 +28,8 @@ def make_model(batch_size,epochs,verbose,units):
     model_name = f'{batch_size}_{units}'
     model_path = model_name + '_{epoch:02d}.h5'
     
-    callbacks = [EarlyStopping(monitor='val_loss', patience=0, verbose=2),ModelCheckpoint(model_path, monitor='val_loss', save_best_only=True)]
+    callbacks = [EarlyStopping(monitor='val_loss', patience=0, verbose=2),
+                 ModelCheckpoint(model_path, monitor='val_loss', save_best_only=True)]
     
     model = Sequential()
     

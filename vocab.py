@@ -41,12 +41,14 @@ def process_files(path):
 
                 VOCAB[line[0]] += 1    
                 prev.append(line[0])
-    rare = []
+    
+    rare = [] #list of words that occur in only one document
     
     for word in VOCAB:
         if VOCAB[word] < 2:
             rare.append(word)
     
+    #remove words that only occur in one document
     for word in rare:
         VOCAB.pop(word)
 
